@@ -1,6 +1,8 @@
 const connection = require("../config/connection");
 
+//Functions for MySql reference
 const orm = {
+  //Selects all from passed table variable
   selectAll: (tableName) => {
     return new Promise((resolve, reject) => {
       const queryString = "SELECT * FROM ??";
@@ -10,6 +12,7 @@ const orm = {
       });
     });
   },
+  //Creates one from table name, columns, and values
   insertOne: (tableName, colName, colValue) => {
     return new Promise((resolve, reject) => {
       const queryString = "INSERT INTO ?? (??) VALUES ?";
@@ -25,6 +28,7 @@ const orm = {
       );
     });
   },
+  //Updates one record based on table name, single column name, single column value, and id
   updateOne: (tableName, colName, colValue, recordID) => {
     return new Promise((resolve, reject) => {
       const queryString = "update ?? SET ?? = ? where id = ?";
@@ -38,6 +42,7 @@ const orm = {
       );
     });
   },
+  //Deletes a single record based on table name and record ID
   deleteOne: (tableName, recordID) =>{
     return new Promise((resolve, reject) => {
       const queryString = "DELETE FROM ?? WHERE id = ?";

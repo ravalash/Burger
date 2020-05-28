@@ -7,18 +7,22 @@
 
 
 <div class="container">
+    {{!-- Top row, displays logo and restaurant welcome message --}}
     <div class="row mb-3 justify-content-center">
         <div class=" col-12" align="center">
             <h1 style="font-family: 'Rock Salt', cursive;">Welcome to Eat-Da-Burger!</h1>
             <img src="/assets/images/burgerimage.png" alt="Eat-Da-Burger" height="150vh">
         </div>
     </div>
+    {{!-- Middle row displays two columns with saved and devoured burgers --}}
     <div class="row justify-content-between mb-3">
         <div class="col-lg-6 col-12">
-            <div class="card border-secondary bg-light" style="width: 100%; height:100%;font-family: 'DM Serif Text', serif;">
+            <div class="card border-secondary bg-light"
+                style="width: 100%; height:100%;font-family: 'DM Serif Text', serif;">
                 <div class="card-header">
-                    <h2 align="center" >Burgers to Eat</h2>
+                    <h2 align="center">Burgers to Eat</h2>
                 </div>
+                {{!-- Loops through all items in passed object for uneaten burgers to generate burger name and devour button with ID tag --}}
                 <ul class="list-group list-group-flush" align="center">
                     {{#each burgers}}
                     {{#unless devoured}}
@@ -37,11 +41,12 @@
             </div>
         </div>
         <div class="col-lg-6 col-12">
-            <div class="card border-secondary bg-light mt-lg-0 mt-2" style="width: 100%;height:100%;font-family: 'DM Serif Text', serif;">
+            <div class="card border-secondary bg-light mt-lg-0 mt-2"
+                style="width: 100%;height:100%;font-family: 'DM Serif Text', serif;">
                 <div class="card-header">
                     <h2 align="center">Burgers You've Eaten</h2>
                 </div>
-
+                {{!-- Loops through all items in passed object for eaten burgers to generate burger name and delete button with ID tag --}}
                 <ul class="list-group list-group-flush" align="center">
                     {{#each burgers}}
                     {{#if devoured}}
@@ -58,6 +63,7 @@
             </div>
         </div>
     </div>
+    {{!-- Bottom row contains entry forms for new burger names and button to submit form --}}
     <div class="row justify-content-center">
         <div class="col-12" align="center" style="font-family: 'DM Serif Text', serif;">
             <h2>Add a Burger</h2>

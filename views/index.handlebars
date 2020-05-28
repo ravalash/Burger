@@ -5,7 +5,14 @@
 <ul>
     {{#each burgers}}
     {{#unless devoured}}
-    {{> burger/burger-window eat=true}}
+    <li>
+        {{burger_name}}
+
+        <button class="devour-burger" data-id="{{id}}">
+            DEVOUR!!!
+        </button>
+
+    </li>
     {{/unless}}
     {{/each}}
 </ul>
@@ -15,7 +22,12 @@
 <ul>
     {{#each burgers}}
     {{#if devoured}}
-    {{> burger/burger-window eat=false}}
+    <li>
+        {{burger_name}}
+                <button class="delete-burger" data-id="{{id}}">
+            HIDE THE EVIDENCE!
+        </button>
+    </li>
     {{/if}}
     {{/each}}
 </ul>

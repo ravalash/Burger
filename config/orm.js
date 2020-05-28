@@ -38,6 +38,15 @@ const orm = {
       );
     });
   },
+  deleteOne: (tableName, recordID) =>{
+    return new Promise((resolve, reject) => {
+      const queryString = "DELETE FROM ?? WHERE id = ?";
+      connection.query(queryString, [tableName, recordID], (err, result) => {
+        if (err) reject(err);
+        resolve(result);
+      });
+    });
+  }
 };
 
 module.exports = orm;

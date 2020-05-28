@@ -20,12 +20,21 @@ router.post("/api/burgers", async (req, res) => {
 });
 
 router.put("/api/burgers/:id", async (req, res) => {
-  const result = await burger.update(
-    "devoured",
-    req.body.devoured,
-    req.params.id
-  );
+  console.log(req.params.id);
+  const result = await burger.update("devoured", 1, req.params.id);
+  console.log(result);
   if (result.changedRows === 0) {
+    // If no rows were changed, then the ID must not exist, so 404
+    return res.status(404).end();
+  }
+  res.status(200).end();
+});
+
+router.delete("/api/burgers/:id", async (req, res) => {
+  console.log(req.params.id);
+  const result = await burger.delete(req.params.id);
+  console.log(result);
+  if (result.affectedRows === 0) {
     // If no rows were changed, then the ID must not exist, so 404
     return res.status(404).end();
   }

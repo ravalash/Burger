@@ -11,9 +11,15 @@ const burger = {
     return result;
   },
   update: async (cols, vals, id) => {
-    const result = orm.updateOne("burgers", cols, vals, id);
+    console.log("Devouring burger "+id)
+    const result = await orm.updateOne("burgers", cols, vals, id);
     return result;
   },
+  delete: async(id) =>{
+    console.log("Deleting burger "+id);
+    const result=await orm.deleteOne("burgers", id);
+    return result;
+  }
 };
 
 module.exports = burger;
